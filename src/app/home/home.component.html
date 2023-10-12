@@ -1,0 +1,5 @@
+<p>Agregar Tarea</p>
+<form (ngSubmit)="cerrarModal()">
+    <input required name="nombre"  [(ngModel)]="_tarea.nombre" placeholder="Nombre de la Tarea">
+    <button type="submit">Agregar Tarea</button>
+</form>
