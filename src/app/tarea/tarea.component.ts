@@ -18,4 +18,8 @@ export class TareaComponent {
     console.log(this.ListaService.getLista());
     this.refresh.emit();
   }
+  cumplida(){
+    this._tarea.estado =='Cumplido';
+    this.refresh.emit();
+  }
 }

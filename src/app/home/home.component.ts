@@ -13,6 +13,7 @@ export class HomeComponent {
     this._tareas=_ListaService.getLista();
   }
   changeModal(){
+    this.refreshList();
     this.modal=!this.modal;
   }
   refreshList(){
