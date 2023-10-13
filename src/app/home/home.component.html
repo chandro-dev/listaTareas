@@ -1,11 +1,24 @@
 <h1>Lista de tareas</h1>
 
 <button (click)="changeModal()">Agregar Tarea</button>
-<ul>
-  <li *ngFor="let tarea of _tareas">
-        <app-tarea [_tarea]="tarea" (refresh)="refreshList()"></app-tarea>
-  </li>
-</ul>
+<div *ngIf="_tareas.length==0?false:true">
+  <h2>Tareas Pendientes</h2>
+  <ul>
+    <li *ngFor="let tarea of _tareas">
+      <app-tarea [_tarea]="tarea" (refresh)="refreshList()"></app-tarea>
+    </li>
+  </ul>
+</div>
+<div *ngIf="_tareas_Cumplidas.length==0?false:true">
+  <h2>Tareas cumplidas</h2>
+  <ul>
+    <li *ngFor="let tarea of _tareas_Cumplidas">
+      <app-tarea [_tarea]="tarea" (refresh)="refreshList()"></app-tarea>
+    </li>
+  </ul>
+</div>
+
+
 <div *ngIf="modal">
-    <app-modtarea (modal)="changeModal()"></app-modtarea>
+  <app-modtarea (modal)="changeModal()"></app-modtarea>
 </div>

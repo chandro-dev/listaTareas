@@ -19,7 +19,8 @@ export class TareaComponent {
     this.refresh.emit();
   }
   cumplida(){
-    this._tarea.estado =='Cumplido';
+    this._tarea.cambiarEstado('Cumplida');
+    this.ListaService.actualizarTarea(this._tarea);
     this.refresh.emit();
   }
 }

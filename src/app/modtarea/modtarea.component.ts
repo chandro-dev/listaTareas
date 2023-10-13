@@ -13,7 +13,7 @@ export class ModtareaComponent {
   constructor(private listaService:ListaService) {
   }
   cerrarModal(){
-    this._tarea.estado="Pendiente";
+    this._tarea.cambiarEstado('Pendiente');
     this._tarea.fecha=new Date;
     this.listaService.add(this._tarea);
     this._tarea=new tarea;

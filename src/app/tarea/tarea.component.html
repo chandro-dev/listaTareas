@@ -1,7 +1,8 @@
-<div class="container">
+<div [ngClass]="_tarea.class" class="container">
   <h1>{{_tarea.nombre}}</h1>
-  <h2>{{_tarea.estado}}</h2>
-  <h3>{{_tarea.fecha}}</h3>
+  <h2>Estado de la tarea: {{_tarea.estado}}</h2>
+  <h3>Fexha de creacion de la tarea: {{_tarea.fecha.getHours()}}</h3>
+  <h3 *ngIf="_tarea.estado=='Cumplida'?true:false">Fecha de culminacion de la tarea: {{_tarea.fecha_cumplida}} </h3>
   <button (click)="rmTarea()">Eliminar Tarea</button>
   <button (click)="cumplida()">Tarea Cumplida</button>
   <button>Modificar Tarea</button>

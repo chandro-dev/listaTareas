@@ -8,6 +8,7 @@ import { ListaService } from '../lista.service';
 })
 export class HomeComponent {
  _tareas:tarea[]=[];
+ _tareas_Cumplidas:tarea[]=[];
  modal:boolean=false;
   constructor(private _ListaService:ListaService){
     this._tareas=_ListaService.getLista();
@@ -19,5 +20,6 @@ export class HomeComponent {
   refreshList(){
     console.log("Refrescando Lista");
     this._tareas=this._ListaService.getLista();
+    this._tareas_Cumplidas=this._ListaService.getListaCumplidos();
   }
 }

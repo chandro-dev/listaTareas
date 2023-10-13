@@ -17,9 +17,11 @@ export class ListaService {
     return this.lista;
   }
   getListaCumplidos():tarea[]{
-    return this.lista.filter(Element =>Element.estado==='Cumplida');
+    return this.lista.filter(Element =>Element.estado =='Cumplida');
   }
   actualizarTarea(tarea:tarea){
+    console.log(tarea.estado);
     this.lista[this.lista.findIndex(_tarea=>_tarea.nombre==tarea.nombre)]=tarea;
+    
   }
 }

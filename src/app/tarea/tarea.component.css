@@ -5,3 +5,9 @@
     border-radius: 20px;
     text-align: center;
 }
+.Pendiente{
+    background-color: yellow;
+}
+.Cumplida{
+    background-color: green;
+}
