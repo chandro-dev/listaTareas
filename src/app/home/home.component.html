@@ -1,5 +1,11 @@
-<p>Agregar Tarea</p>
-<form (ngSubmit)="cerrarModal()">
-    <input required name="nombre"  [(ngModel)]="_tarea.nombre" placeholder="Nombre de la Tarea">
-    <button type="submit">Agregar Tarea</button>
-</form>
+<h1>Lista de tareas</h1>
+
+<button (click)="changeModal()">Agregar Tarea</button>
+<ul>
+  <li *ngFor="let tarea of _tareas">
+        <app-tarea [_tarea]="tarea" (refresh)="refreshList()"></app-tarea>
+  </li>
+</ul>
+<div *ngIf="modal">
+    <app-modtarea (modal)="changeModal()"></app-modtarea>
+</div>

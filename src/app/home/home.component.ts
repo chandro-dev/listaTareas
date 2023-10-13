@@ -7,14 +7,16 @@ import { ListaService } from '../lista.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  @Output() modal = new EventEmitter<void>();
-  _tarea:tarea = new tarea;
-  constructor(private listaService:ListaService) {
+ _tareas:tarea[]=[];
+ modal:boolean=false;
+  constructor(private _ListaService:ListaService){
+    this._tareas=_ListaService.getLista();
   }
-  cerrarModal(){
-    this._tarea.estado="Pendiente";
-    this._tarea.fecha=new Date;
-    this.listaService.add(this._tarea);
-    this.modal.emit();
+  changeModal(){
+    this.modal=!this.modal;
+  }
+  refreshList(){
+    console.log("Refrescando Lista");
+    this._tareas=this._ListaService.getLista();
   }
 }

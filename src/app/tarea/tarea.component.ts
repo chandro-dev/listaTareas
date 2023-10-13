@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,EventEmitter,Output } from '@angular/core';
 import {tarea} from '../class/tarea';
+import { ListaService } from '../lista.service';
 @Component({
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
@@ -7,7 +8,14 @@ import {tarea} from '../class/tarea';
 })
 export class TareaComponent {
   @Input() _tarea :tarea;
-  constructor() {
+  @Output() refresh = new EventEmitter<void>();
+
+  constructor( private ListaService:ListaService) {
     this._tarea = new tarea;
+  }
+  rmTarea(){
+    this.ListaService.rm(this._tarea);
+    console.log(this.ListaService.getLista());
+    this.refresh.emit();
   }
 }

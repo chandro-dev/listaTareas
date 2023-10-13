@@ -13,4 +13,8 @@ export class ListaService {
   add(_tarea:tarea):void{
     this.lista.push(_tarea);
   }
+  rm(_tarea:tarea):tarea[]{
+    this.lista=this.lista.filter(Element => Element.nombre!= _tarea.nombre);
+    return this.lista;
+  }
 }
