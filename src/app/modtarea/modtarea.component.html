@@ -1,5 +1,5 @@
-<p>Agregar Tarea</p>
-<form (ngSubmit)="cerrarModal()">
-    <input required name="nombre" type="text" [(ngModel)]="_tarea.nombre" placeholder="Nombre de la Tarea">
-    <button type="submit">Agregar Tarea</button>
+<h1>{{mod?'Agregar una nueva tarea':'Modificar Tarea'}}</h1>
+<form (ngSubmit)="mod?cerrarModal():modTarea()">
+  <input required name="nombre" type="text" [(ngModel)]="_tarea.nombre" placeholder="Nombre de la Tarea">
+  <button type="submit">Agregar Tarea</button>
 </form>

@@ -1,25 +1,27 @@
-import { Component,EventEmitter,Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { tarea } from '../class/tarea';
 import { ListaService } from '../lista.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
- _tareas:tarea[]=[];
- _tareas_Cumplidas:tarea[]=[];
- modal:boolean=false;
-  constructor(private _ListaService:ListaService){
-    this._tareas=_ListaService.getLista();
+  _tareas: tarea[] = [];
+  _tareas_Cumplidas: tarea[] = [];
+  modal: boolean = false;
+  constructor(private _ListaService: ListaService) {
+    this._tareas = _ListaService.getLista();
+    this._ListaService.modal$.subscribe((valor) => {
+      this.modal = valor;
+      this.refreshList();
+    });
   }
-  changeModal(){
-    this.refreshList();
-    this.modal=!this.modal;
+  refreshList() {
+    this._tareas = this._ListaService.getLista();
+    this._tareas_Cumplidas = this._ListaService.getListaCumplidos();
   }
-  refreshList(){
-    console.log("Refrescando Lista");
-    this._tareas=this._ListaService.getLista();
-    this._tareas_Cumplidas=this._ListaService.getListaCumplidos();
+  changeModal() {
+    this._ListaService.changeModal();
   }
 }
